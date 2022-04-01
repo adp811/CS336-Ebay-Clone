@@ -16,17 +16,14 @@
 		
 			<h1>Register on Group 58's eBay Clone</h1>
 			
-			<form action="checkLoginDetails.jsp" method="POST"> <!-- Need to change action here -->
+			<form action="registerNewUser.jsp" method="POST"> <!-- Need to change action here -->
+			
 			  First Name: <input type="text" name="firstName"/> <br/>
-			  
 			  Last Name: <input type="text" name="lastName"/> <br/>
-			  
 			  Email: <input type="text" name="email"/> <br/>
-			  
 			  Password: <input type="password" name="password"/> <br/>
-			  
+			  Phone Number: <input type="text" name="phonenumber"/> <br/>
 			  Birth Date: <input type="date" name="birthdate"/> <br/>
-			  
 			  Address: <input type="text" name="address"/> <br/>
 			  
 			  <input type="submit" value="register"/>
