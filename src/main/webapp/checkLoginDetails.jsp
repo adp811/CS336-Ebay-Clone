@@ -45,8 +45,9 @@
 				
 			} else {
 				
-				out.print("Account credentials found! Move on to the homepage user " + result.getInt("user_id"));
-				//need to add segue here into home page.
+				out.print("Account credentials found! Moving on to the homepage user " + result.getInt("user_id"));
+				session.setAttribute("user_id", result.getInt("user_id"));
+				response.sendRedirect("HomePage.jsp");
 				
 			}
 			
