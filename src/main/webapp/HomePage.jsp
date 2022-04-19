@@ -10,6 +10,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
+<style>
+	.listings {
+		--minItemWidth: 250px;
+		--contentSpacing: 5px;
+
+		display: grid;
+		grid-template-columns: repeat(
+			auto-fit,
+			minmax(min(var(--minItemWidth), 100%), 1fr)
+		);
+		gap: calc(var(--contentSpacing) * 2);
+	}
+
+	.listing-item {
+		grid-column: span 1;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.listing-item span {
+		display: block;
+		padding: calc(var(--contentSpacing) / 2) 0;
+	}
+
+	.listing-item img {
+		width: 100%;
+		margin-bottom: calc(var(--contentSpacing) / 2);
+	}
+
+	.listing-item .title {
+		font-size: 1rem;
+	}
+
+	.listing-item .price {
+		font-size: 1.25rem;
+	}
+
+	.listing-item .info {
+		font-size: 1rem;
+		color: #555;
+	}
+</style>
+
 <body>
 	
 	<%
@@ -31,7 +75,42 @@
 	
 		<input type="button" value="logOut" onclick="logoutTapped();" >
 		
+		<div class="listings">
+      <div class="listing-item">
+        <img src="//picsum.photos/300/200" />
+        <span class="title">Item 1</span>
+        <span class="price">$1,000</span>
+        <span class="info">Free shipping</span>
+      </div>
 
+      <div class="listing-item">
+        <img src="//picsum.photos/300/200" />
+        <span class="title">Item 1</span>
+        <span class="price">$1,000</span>
+        <span class="info">Free shipping</span>
+      </div>
+
+      <div class="listing-item">
+        <img src="//picsum.photos/300/200" />
+        <span class="title">Item 1</span>
+        <span class="price">$1,000</span>
+        <span class="info">Free shipping</span>
+      </div>
+
+      <div class="listing-item">
+        <img src="//picsum.photos/300/200" />
+        <span class="title">Item 1</span>
+        <span class="price">$1,000</span>
+        <span class="info">Free shipping</span>
+      </div>
+
+      <div class="listing-item">
+        <img src="//picsum.photos/300/200" />
+        <span class="title">Item 1</span>
+        <span class="price">$1,000</span>
+        <span class="info">Free shipping</span>
+      </div>
+    </div>
 
 	
 </body>
