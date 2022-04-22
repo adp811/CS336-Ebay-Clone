@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Register Page</title>
+<title>Login Page</title>
 	<style>
 		.form {
 			display: block;
@@ -23,15 +23,15 @@
 			padding-left: 10px;
 			box-sizing: border-box;
 		}
-		.button-register {
+		.button-login {
     		display:block;      
     		margin:0 auto;
 	        border: 3px solid black;
 	        border-radius: 8px;
-			background-color: black ;
+			background-color: #28b463 ;
 			color: white;
 			padding: 12px 26px;
-			width: 200px;
+			width: 275px;
 			font-size: 17px;
 			font-weight: 650;
 			cursor: pointer;
@@ -53,22 +53,17 @@
 
 	<div class="center-hv">
 	
-		<h1>Register on Group 58's eBay Clone</h1>
+		<h1>eBay Clone Admin Login</h1>
 	
-		<form action="registerNewUser.jsp" method="POST"> <!-- Need to change action here -->
-			
-		  <input class="form" type="text" name="firstName" placeholder="first name" /> <br/>
-		  <input class="form" type="text" name="lastName" placeholder="last name" /> <br/>
-		  <input class="form" type="text" name="email" placeholder="email address" /> <br/>
-		  <input class="form" type="password" name="password" placeholder="password" /> <br/>
-		  <input class="form" type="text" name="phonenumber" placeholder="phone number" /> <br/>
-		  <input class="form" type="text" name="address" placeholder="address" /> <br/>
-		  Birth Date: <input class="form" type="date" name="birthdate"/> <br/>
-		  
-		  <input class="button-register" type="submit" value="register"/>
-		  
+		<br/>
+		
+		<form action="checkAdminLoginDetails.jsp" method="POST"> <!-- Need to change action here -->
+			<input class="form" type="text" name="email" placeholder="email address" /> <br/>
+			<input class="form" type="password" name="password" placeholder="password"/> <br/>
+			<input class="button-login" type="submit" value="login to admin dashboard"/>
 		</form>
 	
+		
 	</div>
 	
 </body> 
