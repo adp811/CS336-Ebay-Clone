@@ -37,7 +37,7 @@
 	
 	<div class="center-hv">
 		
-		<input class="button" type="button" value="Create Customer Representative Account" onclick="window.location='CreateCustRep.jsp'" >
+		<input class="button" type="button" value="Create Customer Representative Account" onclick="window.location='RegisterCustRep.jsp'" >
 	
 		<br/>
 	
