@@ -8,9 +8,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
 </head>
+<center>
 <body>
+	
+	
+	<title>Welcome to the Auction Page!</title>
 	
 	<%
 
@@ -20,19 +23,21 @@
 	
 		<script language="JavaScript">
         
-	        function logoutTapped()
-	        {
-
+	        function logoutTapped(){
 	        	window.location = "Login.jsp";
-
 	        } 
-        
+        	
+	        function addListing(){
+	        	window.location = "RegisterListing.jsp"
+	        }
     	</script>
 	
 		<input type="button" value="logOut" onclick="logoutTapped();" >
+		<input type="button" value="Add Listing" onclick="addListing();" >
 		
 
 
 	
 </body>
+</center>
 </html>
