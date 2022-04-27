@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Checking Login Details...</title>
+<title>Checking Customer Representative Login Details...</title>
 </head>
 <body>
 	<%
@@ -30,24 +30,24 @@
 			String user_pass = request.getParameter("password");
 			
 			
-			//make a SELECT query to retrieve user credentials
-			String select = "SELECT user_id, email, password FROM users WHERE email='" + user_email + "' AND password='" + user_pass + "'";
+			//make a SELECT query to retrieve user credentials if they are a customer rep
+			String select = "SELECT user_id, email, password FROM users WHERE email='" + user_email + "' AND password='" + user_pass + "' AND account_type='customer_rep'";
 			
 			
 			//Run the query against the database.
 			ResultSet result = stmt.executeQuery(select);
 			
 			
-			//check if credentials exist in users table
+			//check if credentials exist in the results table
 			if(!result.next()) {
 			
-				out.print("Account does not exist or email/password is incorrect.");
+				out.print("Customer Representative Account does not exist or email/password is incorrect. Please contact an Admin for assistance");
 				
 			} else {
 				
-				out.print("Account credentials found! Moving on to the homepage user " + result.getInt("user_id"));
+				out.print("Account credentials found! Moving on to the customer rep dashboard. user " + result.getInt("user_id"));
 				session.setAttribute("user_id", result.getInt("user_id"));
-				response.sendRedirect("HomePage.jsp");
+				//response.sendRedirect("AdminDashboard.jsp"); Change location to customer rep dashboard here
 				
 			}
 			

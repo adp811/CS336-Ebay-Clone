@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Register Page</title>
+<title>Register Customer Representative</title>
 	<style>
 		.form {
 			display: block;
@@ -53,9 +53,9 @@
 
 	<div class="center-hv">
 	
-		<h1>Register on Group 58's eBay Clone</h1>
+		<h1>Register a Customer Representative on Group 58's eBay Clone</h1>
 	
-		<form action="registerNewUser.jsp" method="POST"> <!-- Need to change action here -->
+		<form action="registerCustRepUser.jsp" method="POST"> <!-- Need to change action here -->
 			
 		  <input class="form" type="text" name="firstName" placeholder="first name" /> <br/>
 		  <input class="form" type="text" name="lastName" placeholder="last name" /> <br/>
