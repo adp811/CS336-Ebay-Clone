@@ -74,6 +74,21 @@
     	</script>
 	
 		<input type="button" value="logOut" onclick="logoutTapped();" >
+		<% 
+		try{
+			ApplicationDB db = new ApplicationDB();	
+			Connection con = db.getConnection();		
+			Statement stmt = con.createStatement();
+			String str = "SELECT * FROM listing";
+			ResultSet result = stmt.executeQuery(str);
+			
+			
+		
+		}catch (Exception e) {
+			out.print(e);
+		}
+		
+		%>
 		
 		<div class="listings">
       <div class="listing-item">
