@@ -57,13 +57,13 @@
 	
 		<form action="registerCustRepUser.jsp" method="POST"> <!-- Need to change action here -->
 			
-		  <input class="form" type="text" name="firstName" placeholder="first name" /> <br/>
-		  <input class="form" type="text" name="lastName" placeholder="last name" /> <br/>
-		  <input class="form" type="text" name="email" placeholder="email address" /> <br/>
-		  <input class="form" type="password" name="password" placeholder="password" /> <br/>
-		  <input class="form" type="text" name="phonenumber" placeholder="phone number" /> <br/>
-		  <input class="form" type="text" name="address" placeholder="address" /> <br/>
-		  Birth Date: <input class="form" type="date" name="birthdate"/> <br/>
+		  <input class="form" type="text" name="firstName" placeholder="first name" required /> <br/>
+		  <input class="form" type="text" name="lastName" placeholder="last name" required /> <br/>
+		  <input class="form" type="text" name="email" placeholder="email address" required /> <br/>
+		  <input class="form" type="password" name="password" placeholder="password" required /> <br/>
+		  <input class="form" type="text" name="phonenumber" placeholder="phone number" required /> <br/>
+		  <input class="form" type="text" name="address" placeholder="address" required /> <br/>
+		  Birth Date: <input class="form" type="date" name="birthdate" required /> <br/>
 		  
 		  <input class="button-register" type="submit" value="register"/>
 		  

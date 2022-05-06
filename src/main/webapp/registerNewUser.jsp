@@ -63,7 +63,12 @@
 	
 	%>
 			<a href="Login.jsp">User registered successfully, please log in.</a>
-	
+			<span>Redirecting in 5 seconds.</span>
+			<script>
+				window.setTimeout(() => {
+					window.location.href = 'Login.jsp'
+				}, 5000)
+			</script>
 	<% 
 			
 		} catch (Exception ex) {
