@@ -1,0 +1,45 @@
+<div class='listing-item'>
+	
+	<img src='"+itemImageURL+"' />
+	
+	<span class='title'>"+itemName+"</span>
+	
+	<span class='price'>Starting Price $"+itemStartingPrice+"</span>
+	
+	<span class='info'>Bid closes "+itemCloseDate+"</span>
+	
+	<span class='bid'>
+		
+		<form action='registerNewBid.jsp' method='POST'>
+		  <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/>			 
+		  <input class='button-register' type='submit' value='register'/>
+		</form>
+		
+	</span>
+	
+</div>			
+
+
+<div class='listing-item'>		
+	<img src='"+itemImageURL+"' />		
+	
+	<span class='title'>"+itemName+"</span>		
+	
+	<span class='price'>Starting Price $"+itemStartingPrice+"</span>		
+	
+	<span class='info'>Bid closes "+itemCloseDate+"</span>		
+	
+	<span class='bid'>				
+	
+		<form action='registerNewBid.jsp' method='POST'>  
+		
+			<input type='hidden' name='listingID' value='${listingID}'/> <br/>	
+		
+			<input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/>	
+					 		  
+			<input class='button-register' type='submit' value='Submit Bid'/> 
+			
+		</form>			
+			
+	</span>	
+</div>			

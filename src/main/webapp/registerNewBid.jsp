@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registering New Item...</title>
+<title>Registering New Bid...</title>
 </head>
 <body>
 	<%
@@ -25,19 +25,14 @@
 			
 	
 			//Get parameters from the HTML form at the HelloWorld.jsp
+			
+			String listing_id = "" + request.getParameter("listingID");
 			String user_id = "" + session.getAttribute("user_id");
-			String itemImageURL = request.getParameter("itemImageURL");
-			String itemName = request.getParameter("itemName");
-			String itemBrand = request.getParameter("itemBrand");
-			String itemSubcategory = request.getParameter("itemSubcategory");
-			String itemDescription = request.getParameter("itemDescription");
-			String itemStartingPrice = request.getParameter("itemStartingPrice");
-			String itemSafetyPrice = request.getParameter("itemSafetyPrice");
-			String itemCloseDate = request.getParameter("itemCloseDate");
+			String price = request.getParameter("bidAmount");
 
 			//Make an insert statement for the users table:
-			String insert = "INSERT INTO listing (user_id, itemImageURL, itemName, itemBrand, itemSubcategory, itemDescription, itemStartingPrice, itemSafetyPrice, itemCloseDate) "
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+			String insert = "INSERT INTO bids (listing_id, user_id, price) "
+					+ "VALUES (?, ?, ?)"; 
 			
 			
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
@@ -45,16 +40,10 @@
 			
 	
 			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-			ps.setString(1, user_id);
-			ps.setString(2, itemImageURL);
-			ps.setString(3, itemName);
-			ps.setString(4, itemBrand);
-			ps.setString(5, itemSubcategory);
-			ps.setString(6, itemDescription);
-			ps.setString(7, itemStartingPrice);
-			ps.setString(8, itemSafetyPrice);			
-			ps.setString(9, itemCloseDate);			
-
+			ps.setString(1, listing_id);
+			ps.setString(2, user_id);
+			ps.setString(3, price);
+			
 			//Run the query against the DB
 			ps.executeUpdate(); 
 	
@@ -62,8 +51,7 @@
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			
-			response.sendRedirect("HomePage.jsp");
-	
+			response.sendRedirect("HomePage.jsp");	
 			
 		} catch (Exception ex) {
 			out.print(ex);

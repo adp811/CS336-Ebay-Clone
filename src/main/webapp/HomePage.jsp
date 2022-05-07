@@ -92,18 +92,19 @@
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();		
 			Statement stmt = con.createStatement();
-			String str = "SELECT itemName, itemImageURL, itemStartingPrice, itemCloseDate FROM listing";
+			String str = "SELECT listing_id, itemName, itemImageURL, itemStartingPrice, itemCloseDate FROM listing ORDER BY itemCloseDate";
 			ResultSet result = stmt.executeQuery(str);
 			
 			while (result.next()) {
-			  String itemName = result.getString(1);
-			  String itemImageURL = result.getString(2);
-			  String itemStartingPrice = result.getString(3);
-			  String itemCloseDate = result.getString(4);
-			  out.println("<div class='listing-item'><img src='"+itemImageURL+"' /><span class='title'>"+itemName+"</span><span class='price'>Starting Price $"+itemStartingPrice+"</span><span class='info'>Bid closes "+itemCloseDate+"</span></div>");
+		      String listingID = result.getString(1);
+		      String itemName = result.getString(2);
+			  String itemImageURL = result.getString(3);
+			  String itemStartingPrice = result.getString(4);
+			  String itemCloseDate = result.getString(5);
+			  String userID = "" + session.getAttribute("user_id");
+			  //out.println("<div class='listing-item'>		<img src='"+itemImageURL+"' />		<span class='title'>"+itemName+"</span>		<span class='price'>Starting Price $"+itemStartingPrice+"</span>		<span class='info'>Bid closes "+itemCloseDate+"</span>		<span class='bid'>				<form action='registerNewBid.jsp' method='POST'>  <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/>			 		  <input class='button-register' type='submit' value='Submit Bid'/> </form>			</span>	</div>			");			
+			  out.println("<div class='listing-item'>			<img src='"+itemImageURL+"' />				<span class='title'>"+itemName+"</span>				<span class='price'>Starting Price $"+itemStartingPrice+"</span>				<span class='info'>Bid closes "+itemCloseDate+"</span>				<span class='bid'>							<form action='registerNewBid.jsp' method='POST'>  					<input type='hidden' name='listingID' value="+listingID+"> <br/>						<input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/>						 		  			<input class='button-register' type='submit' value='Submit Bid'/> 					</form>							</span>	</div>			");
 			}
-			
-		
 		}catch (Exception e) {
 			out.print(e);
 		}
