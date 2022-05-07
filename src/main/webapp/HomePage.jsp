@@ -23,6 +23,10 @@
 		);
 		gap: calc(var(--contentSpacing) * 2);
 	}
+	
+	.listing-item-hack {
+		grid-column: span 1;
+	}
 
 	.listing-item {
 		grid-column: span 1;
@@ -55,6 +59,13 @@
 </style>
 
 <body>
+	<nav style="display:flex;position:sticky;top:0;padding:10px;background:black;margin-bottom:10px;color:white;">
+		<b>CS336-Ebay-Clone</b>
+		<div style="flex:1;"></div>
+		<a href="AddListing.jsp" style="color:unset;">Add listing</a>
+		<a href="Login.jsp" style="color:unset;margin-left:10px;">Log out</a>
+	</nav>
+	
 	
 	<%
 
@@ -74,14 +85,23 @@
     	</script>
 	
 		<input type="button" value="logOut" onclick="logoutTapped();" >
+		
+		<div class="listings">
 		<% 
 		try{
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();		
 			Statement stmt = con.createStatement();
-			String str = "SELECT * FROM listing";
+			String str = "SELECT itemName, itemImageURL, itemStartingPrice, itemCloseDate FROM listing";
 			ResultSet result = stmt.executeQuery(str);
 			
+			while (result.next()) {
+			  String itemName = result.getString(1);
+			  String itemImageURL = result.getString(2);
+			  String itemStartingPrice = result.getString(3);
+			  String itemCloseDate = result.getString(4);
+			  out.println("<div class='listing-item'><img src='"+itemImageURL+"' /><span class='title'>"+itemName+"</span><span class='price'>Starting Price $"+itemStartingPrice+"</span><span class='info'>Bid closes "+itemCloseDate+"</span></div>");
+			}
 			
 		
 		}catch (Exception e) {
@@ -90,41 +110,15 @@
 		
 		%>
 		
-		<div class="listings">
-      <div class="listing-item">
-        <img src="//picsum.photos/300/200" />
-        <span class="title">Item 1</span>
-        <span class="price">$1,000</span>
-        <span class="info">Free shipping</span>
-      </div>
+		<!-- THIS IS A HACK -->
+		<div class='listing-item-hack'></div>
+		<div class='listing-item-hack'></div>
+		<div class='listing-item-hack'></div>
+		<div class='listing-item-hack'></div>
+		<div class='listing-item-hack'></div>
+		<div class='listing-item-hack'></div>
+		
 
-      <div class="listing-item">
-        <img src="//picsum.photos/300/200" />
-        <span class="title">Item 1</span>
-        <span class="price">$1,000</span>
-        <span class="info">Free shipping</span>
-      </div>
-
-      <div class="listing-item">
-        <img src="//picsum.photos/300/200" />
-        <span class="title">Item 1</span>
-        <span class="price">$1,000</span>
-        <span class="info">Free shipping</span>
-      </div>
-
-      <div class="listing-item">
-        <img src="//picsum.photos/300/200" />
-        <span class="title">Item 1</span>
-        <span class="price">$1,000</span>
-        <span class="info">Free shipping</span>
-      </div>
-
-      <div class="listing-item">
-        <img src="//picsum.photos/300/200" />
-        <span class="title">Item 1</span>
-        <span class="price">$1,000</span>
-        <span class="info">Free shipping</span>
-      </div>
     </div>
 
 	
