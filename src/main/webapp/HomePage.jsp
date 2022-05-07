@@ -102,8 +102,14 @@
 			  String itemStartingPrice = result.getString(4);
 			  String itemCloseDate = result.getString(5);
 			  String userID = "" + session.getAttribute("user_id");
-			  //out.println("<div class='listing-item'>		<img src='"+itemImageURL+"' />		<span class='title'>"+itemName+"</span>		<span class='price'>Starting Price $"+itemStartingPrice+"</span>		<span class='info'>Bid closes "+itemCloseDate+"</span>		<span class='bid'>				<form action='registerNewBid.jsp' method='POST'>  <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/>			 		  <input class='button-register' type='submit' value='Submit Bid'/> </form>			</span>	</div>			");			
-			  out.println("<div class='listing-item'>			<img src='"+itemImageURL+"' />				<span class='title'>"+itemName+"</span>				<span class='price'>Starting Price $"+itemStartingPrice+"</span>				<span class='info'>Bid closes "+itemCloseDate+"</span>				<span class='bid'>							<form action='registerNewBid.jsp' method='POST'>  					<input type='hidden' name='listingID' value="+listingID+"> <br/>						<input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/>						 		  			<input class='button-register' type='submit' value='Submit Bid'/> 					</form>							</span>	</div>			");
+			  
+			  String topBidderQRY = "SELECT MAX(price) FROM bids WHERE listing_id = " + listingID;
+			  Statement stmt2 = con.createStatement();
+			  ResultSet resultBids = stmt2.executeQuery(topBidderQRY);
+			  resultBids.beforeFirst();
+			  resultBids.next();
+			  String topBid = resultBids.getString(1);
+			  out.println("<div class='listing-item'> <img src='"+itemImageURL+"' /> <span class='title'>"+itemName+"</span> <span class='price'>Starting Price $"+itemStartingPrice+"</span> <span class='price'>Highest Bid $"+topBid+"</span> <span class='info'>Bid closes "+itemCloseDate+"</span> <span class='bid'> <form action='registerNewBid.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <br/> <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/> <input class='button-register' type='submit' value='Submit Bid'/> </form> </span> </div>");
 			}
 		}catch (Exception e) {
 			out.print(e);
