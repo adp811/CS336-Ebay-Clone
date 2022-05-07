@@ -42,6 +42,9 @@
 	.listing-item img {
 		width: 100%;
 		margin-bottom: calc(var(--contentSpacing) / 2);
+		aspect-ratio: 1;
+	    object-fit: contain;
+	    background: black;
 	}
 
 	.listing-item .title {
