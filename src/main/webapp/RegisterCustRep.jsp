@@ -51,9 +51,19 @@
  
 <body>
 
+	<nav style="display:flex;position:sticky;top:0;padding:10px;background:black;margin-bottom:10px;color:white;">
+		<b>Admin Dashboard - User #<% out.print(session.getAttribute("user_id")); %></b>
+		<div style="flex:1;"></div>
+		<a href="RegisterCustRep.jsp" style="color:unset;margin-left:10px;">Register Customer Representative</a>
+		<a href="SalesReportDashboard.jsp" style="color:unset;margin-left:10px;">Sales Reports</a>
+		<a href="AdminLogin.jsp" style="color:unset;margin-left:10px;">Log out</a>
+	</nav>
+	
+	<br/>
+
 	<div class="center-hv">
 	
-		<h1>Register a Customer Representative on Group 58's eBay Clone</h1>
+		<h1>Register a Customer Representative User</h1>
 	
 		<form action="registerCustRepUser.jsp" method="POST"> <!-- Need to change action here -->
 			

@@ -17,7 +17,7 @@
 	        border: 4px solid black;
 	        border-radius: 8px;
 			background-color: white;
-			color: black;
+			color: black; 
 			padding: 14px 28px;
 			font-size: 18px;
 			font-weight: 675;
@@ -34,6 +34,14 @@
 
 </head>
 <body>
+	
+	<nav style="display:flex;position:sticky;top:0;padding:10px;background:black;margin-bottom:10px;color:white;">
+		<b>Admin Dashboard - User #<% out.print(session.getAttribute("user_id")); %></b>
+		<div style="flex:1;"></div>
+		<a href="RegisterCustRep.jsp" style="color:unset;margin-left:10px;">Register Customer Representative</a>
+		<a href="SalesReportDashboard.jsp" style="color:unset;margin-left:10px;">Sales Reports</a>
+		<a href="AdminLogin.jsp" style="color:unset;margin-left:10px;">Log out</a>
+	</nav>
 	
 	<div class="center-hv">
 		

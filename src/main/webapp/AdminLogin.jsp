@@ -36,6 +36,19 @@
 			font-weight: 650;
 			cursor: pointer;
 	    }
+	    .button-misc {
+    		display:block;      
+    		margin:0 auto;
+	        border: 3px solid black;
+	        border-radius: 8px;
+			background-color: black;
+			color: white;
+			padding: 10px 24px;
+			width: 275px;
+			font-size: 15px;
+			font-weight: 600;
+			cursor: pointer;
+	    }
 		.center-hv {
 			position: absolute;
 			left: 50%;
@@ -45,6 +58,9 @@
 		}
 		.spacer {
 			margin-top: 75px;
+		}
+		.spacer-text {
+			margin-top: 30px;
 		}
     </style>
 </head>
@@ -60,8 +76,13 @@
 		<form action="checkAdminLoginDetails.jsp" method="POST"> <!-- Need to change action here -->
 			<input class="form" type="text" name="email" placeholder="email address" required /> <br/>
 			<input class="form" type="password" name="password" placeholder="password" required /> <br/>
+			<div class="spacer-text"></div>
 			<input class="button-login" type="submit" value="login to admin dashboard"/>
 		</form>
+	
+		<br/>
+
+		<input class="button-misc" class="button" type="button" value="return" onclick="window.location='Login.jsp'" >
 	
 		
 	</div>
