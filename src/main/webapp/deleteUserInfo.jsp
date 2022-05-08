@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Deleting Bid...</title>
+<title>Deleting User Information...</title>
 </head>
 <body>
 	<%
@@ -23,13 +23,26 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
+			//create empty query string;
+			String delete = "";
 	
 			//Get parameters from the HTML form at the HelloWorld.jsp
-			String bidID = request.getParameter("bidID");
-						
- 
-			//Make an insert statement for the users table:
-			String delete = "DELETE FROM bids WHERE bid_id=" + bidID; 
+			String userID = request.getParameter("userID");
+			
+			
+			if (request.getParameter("delete_user") != null) { // delete account button is clicked
+				
+				delete = "DELETE FROM users WHERE user_id=" + userID; 
+				
+		    } else if (request.getParameter("delete_bids") != null) { //delete bids button is clicked
+		    	
+				delete = "DELETE FROM bids WHERE user_id=" + userID; 
+					
+		    } else if (request.getParameter("delete_listings") != null) { //delete listings button is clicked
+		    	
+				delete = "DELETE FROM listing WHERE user_id=" + userID; 
+			
+		    }
 			
 			
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
@@ -44,12 +57,12 @@
 			con.close();
 	
 	%>
-			<a href="ManageBidAndAuction.jsp">Bid Deleted Successfully.</a>
-			<span>Redirecting to Manage Bids and Auctions in 3 seconds.</span>
+			<a href="EditUserAccounts.jsp">User Information Deleted Successfully.</a>
+			<span>Redirecting to Edit User Accounts in 5 seconds.</span>
 			<script>
 				window.setTimeout(() => {
-					window.location.href = 'ManageBidAndAuction.jsp'
-				}, 3000)
+					window.location.href = 'EditUserAccounts.jsp'
+				}, 5000)
 			</script>
 	<% 
 			

@@ -57,10 +57,10 @@
 <body>
 	
 	<nav style="display:flex;position:sticky;top:0;padding:10px;background:black;margin-bottom:10px;color:white;">
-		<b>Customer Representative Dashboard</b>
+		<b>Customer Representative Dashboard - User #<% out.print(session.getAttribute("user_id")); %></b>
 		<div style="flex:1;"></div>
 		<a href="CustRepAnsweredQuestions.jsp" style="color:unset;margin-left:10px;">Answered Questions</a>
-		<a href="ManageBidAndAuctions.jsp" style="color:unset;margin-left:10px;">Manage Bids and Auctions</a>
+		<a href="ManageBidAndAuction.jsp" style="color:unset;margin-left:10px;">Manage Bids and Auctions</a>
 		<a href="EditUserAccounts.jsp" style="color:unset;margin-left:10px;">Edit User Accounts</a>
 		<a href="CustRepLogin.jsp" style="color:unset;margin-left:10px;">Log out</a>
 	</nav>

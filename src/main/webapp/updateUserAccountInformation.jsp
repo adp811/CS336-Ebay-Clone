@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Deleting Bid...</title>
+<title>Updating User Account Information...</title>
 </head>
 <body>
 	<%
@@ -25,15 +25,17 @@
 			
 	
 			//Get parameters from the HTML form at the HelloWorld.jsp
-			String bidID = request.getParameter("bidID");
-						
- 
+			String userID = request.getParameter("userID");
+			String selection = request.getParameter("userInfoSelection");
+			String newInformation = request.getParameter("newInformation");
+			  		
+			
 			//Make an insert statement for the users table:
-			String delete = "DELETE FROM bids WHERE bid_id=" + bidID; 
+			String update = "UPDATE users SET " + selection + "='" + newInformation + "' WHERE user_id=" + userID; 
 			
 			
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-			PreparedStatement ps = con.prepareStatement(delete);
+			PreparedStatement ps = con.prepareStatement(update);
 			
 			
 			//Run the query against the DB
@@ -44,18 +46,18 @@
 			con.close();
 	
 	%>
-			<a href="ManageBidAndAuction.jsp">Bid Deleted Successfully.</a>
-			<span>Redirecting to Manage Bids and Auctions in 3 seconds.</span>
+			<a href="EditUserAccounts.jsp">Account Information Updated Successfully.</a>
+			<span>Redirecting to Edit User Accounts in 5 seconds.</span>
 			<script>
 				window.setTimeout(() => {
-					window.location.href = 'ManageBidAndAuction.jsp'
-				}, 3000)
+					window.location.href = 'EditUserAccounts.jsp'
+				}, 5000)
 			</script>
 	<% 
 			
 		} catch (Exception ex) {
 			out.print(ex);
-			out.print("delete failed :()");
+			out.print("update failed :()");
 		}	
 	
 	%>

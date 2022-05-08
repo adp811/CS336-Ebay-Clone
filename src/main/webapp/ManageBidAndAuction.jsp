@@ -68,6 +68,15 @@
  
 <body>
 
+	<nav style="display:flex;position:sticky;top:0;padding:10px;background:black;margin-bottom:10px;color:white;">
+		<b>Manage Bids and Auctions - User #<% out.print(session.getAttribute("user_id")); %></b>
+		<div style="flex:1;"></div>
+		<a href="CustRepAnsweredQuestions.jsp" style="color:unset;margin-left:10px;">Answered Questions</a>
+		<a href="ManageBidAndAuction.jsp" style="color:unset;margin-left:10px;">Manage Bids and Auctions</a>
+		<a href="EditUserAccounts.jsp" style="color:unset;margin-left:10px;">Edit User Accounts</a>
+		<a href="CustRepLogin.jsp" style="color:unset;margin-left:10px;">Log out</a>
+	</nav>
+
 	<div class="center-hv">
 	
 		<h1>Manage Bids and Auctions</h1>
