@@ -12,24 +12,37 @@
 </head>
 
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+	table {
+	  font-family: arial, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+	
+	td, th {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+	}
+	
+	tr:nth-child(even) {
+	  background-color: #dddddd;
+	}
+	center-text {
+	  text-align: center;
+	}
+	.spacer {
+	  margin-top: 60px;
+	}
+	.spacer-text {
+	  margin-top: 20px;
+	}
 </style>
 
 <body>
+
+	<div class="spacer-text"></div>
+
+	<h1>Generate Sales Reports</h1>
 	
 	<table>
 		<thead>
@@ -41,7 +54,32 @@ tr:nth-child(even) {
 		</thead>
 		<tbody>
 			<tr>
-				<td>Total Earnings</td>
+				<td>total earnings</td>
+				<td><input type="date"></input> - <input type="date"></input></td>
+				<td><button>Download PDF</button> <button>Download CSV</button></td>
+			</tr>
+			<tr>
+				<td>earnings per item</td>
+				<td><input type="date"></input> - <input type="date"></input></td>
+				<td><button>Download PDF</button> <button>Download CSV</button></td>
+			</tr>
+			<tr>
+				<td>earnings per item type</td>
+				<td><input type="date"></input> - <input type="date"></input></td>
+				<td><button>Download PDF</button> <button>Download CSV</button></td>
+			</tr>
+			<tr>
+				<td>earnings per end-user</td>
+				<td><input type="date"></input> - <input type="date"></input></td>
+				<td><button>Download PDF</button> <button>Download CSV</button></td>
+			</tr>
+			<tr>
+				<td>best selling items</td>
+				<td><input type="date"></input> - <input type="date"></input></td>
+				<td><button>Download PDF</button> <button>Download CSV</button></td>
+			</tr>
+			<tr>
+				<td>best buyers</td>
 				<td><input type="date"></input> - <input type="date"></input></td>
 				<td><button>Download PDF</button> <button>Download CSV</button></td>
 			</tr>
