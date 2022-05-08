@@ -66,6 +66,7 @@
 		<b>CS336-Ebay-Clone</b>
 		<div style="flex:1;"></div>
 		<a href="AddListing.jsp" style="color:unset;">Add listing</a>
+		<a href="AskQuestion.jsp" style="color:unset;margin-left:10px;">Help</a>
 		<a href="Login.jsp" style="color:unset;margin-left:10px;">Log out</a>
 	</nav>
 	

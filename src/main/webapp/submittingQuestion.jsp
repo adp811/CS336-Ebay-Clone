@@ -36,7 +36,7 @@
   			
 			//user parameters
 			//String user_id = "1"; //change to get user id of current user
-			String user_id = (String)session.getAttribute("user_id");
+			String user_id = "" + session.getAttribute("user_id");
 				
 			//Make an insert statement for the users table:
 			String insert = "INSERT INTO questions (user_id, question_title, question_body, ask_date) "
