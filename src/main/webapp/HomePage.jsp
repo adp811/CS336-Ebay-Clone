@@ -94,6 +94,32 @@
 	
 		<input type="button" value="logOut" onclick="logoutTapped();" >
 		
+		
+	
+		<form id="searchForm">
+			<input id="searchInput"></input>
+			<select id="searchCategory">
+				<option value="cateogry1">Cateogry1</option>
+				<option value="cateogry2">Cateogry2</option>
+			</select>
+			<button>Search</button>
+		</form>
+		
+		<script language="JavaScript">
+        	const form = document.getElementById("searchForm")
+        	const searchInput = document.getElementById("searchInput")
+        	const searchCategory = document.getElementById("searchCategory")
+        	
+        	form.addEventListener("submit", (e) => {
+        		e.preventDefault();
+        		
+        		const searchParams = new URLSearchParams();
+        	    searchParams.set("q", searchInput.value || "");
+        	    searchParams.set("category", searchCategory.value || "");
+        	    window.location.search = searchParams.toString();
+        	})
+    	</script>
+		
 		<div class="listings">
 		<% 
 		try{
