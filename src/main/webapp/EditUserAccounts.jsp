@@ -63,7 +63,8 @@
 			cursor: pointer;
 	    }
 		.center-hv {
-			width: 60%;
+			width: 45%;
+			margin: 0 auto;
 		}
 		.spacer {
 			margin-top: 60px;
@@ -117,6 +118,7 @@
 		
 		<form action="deleteUserInfo.jsp" method="POST"> <!-- Need to change action here -->
 			<input class="form" type="text" name="userID" placeholder="enter user ID # here" required /> <br/>
+			<div class="spacer-text"></div>
 			<input class="button-remove" type="submit" name="delete_user" value="delete user"/> <br/>
 			<input class="button-remove" type="submit" name="delete_bids" value="delete all bids"/> <br/>
 			<input class="button-remove" type="submit" name="delete_listings" value="delete all listings"/> <br/>
