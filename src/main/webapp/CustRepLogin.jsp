@@ -60,7 +60,7 @@
 		<form action="checkCustRepLoginDetails.jsp" method="POST"> <!-- Need to change action here -->
 			<input class="form" type="text" name="email" placeholder="email address" required /> <br/>
 			<input class="form" type="password" name="password" placeholder="password" required /> <br/>
-			<input class="button-login" type="submit" value="login to admin dashboard"/>
+			<input class="button-login" type="submit" value="login to dashboard"/>
 		</form>
 	
 		

@@ -47,7 +47,7 @@
 				
 				out.print("Account credentials found! Moving on to the customer rep dashboard. user " + result.getInt("user_id"));
 				session.setAttribute("user_id", result.getInt("user_id"));
-				//response.sendRedirect("AdminDashboard.jsp"); Change location to customer rep dashboard here
+				response.sendRedirect("CustRepDashboard.jsp"); //Change location to customer rep dashboard here
 				
 			}
 			

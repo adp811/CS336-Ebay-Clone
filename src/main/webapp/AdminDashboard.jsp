@@ -41,7 +41,7 @@
 	
 		<br/>
 	
-		<input class="button" type="button" value="Generate and Manage Sales Reports" onclick="window.location='SalesReports.jsp'" >
+		<input class="button" type="button" value="Generate and Manage Sales Reports" onclick="window.location='SalesReportDashboard.jsp'" >
 		
 	</div>
 	
