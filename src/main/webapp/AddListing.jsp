@@ -64,7 +64,7 @@
 		  <input class="form" type="text" name="itemDescription" placeholder="Description" /> <br/>
 		  <input class="form" type="number" name="itemStartingPrice" placeholder="Starting Price ($)" /> <br/>
 		  <input class="form" type="number" name="itemSafetyPrice" placeholder="Safety/Minimum Price ($)" /> <br/>
-		  <input class="form" type="date" name="itemCloseDate"/> <br/>
+		  <input class="form" type=datetime-local name="itemCloseDate"/> <br/>
 			 
 		  <input class="button-register" type="submit" value="register"/>
 		  

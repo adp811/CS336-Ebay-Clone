@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import = "java.util.Date" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -72,8 +74,10 @@
 	
 	
 	<%
+	  	Date current = new Date(); 
 
-		out.println("Logged in User " + session.getAttribute("user_id"));
+
+		out.println("Current Time: " + current + " </br> Logged in User " + session.getAttribute("user_id"));
 	
 	%>
 	
@@ -104,23 +108,52 @@
 		      String itemName = result.getString(2);
 			  String itemImageURL = result.getString(3);
 			  String itemStartingPrice = result.getString(4);
-			  String itemCloseDate = result.getString(5);
+			  String tempDate = result.getString(5);
 			  String userID = "" + session.getAttribute("user_id");
+			  String testStringDate = "2022-05-09 17:48:00.0";
+			  //Date testDate = new SimpleDateFormat("yyyy-MM-dd H:m:s.S").parse(testStringDate);  
+			  Date itemCloseDate = new SimpleDateFormat("yyyy-MM-dd H:m:s.S").parse(tempDate);  
+
 			  
-			  String topBidderQRY = "SELECT price, user_id FROM bids WHERE listing_id = " + listingID + " ORDER BY price DESC LIMIT 1";
+			  String topBidderQRY = "SELECT price, user_id, bid_id FROM bids WHERE listing_id = " + listingID + " ORDER BY price DESC LIMIT 1";
 			  Statement stmt2 = con.createStatement();
 			  ResultSet resultBids = stmt2.executeQuery(topBidderQRY);
 			  
 			  String color = "red";
 			  String topBid = "0";
+			  String topBid_ID = "0";
+			  String userBid = "0";
+			  int min = Integer.parseInt(itemStartingPrice);
+			  boolean changed = false;
 			  while(resultBids.next()){
 				  topBid = resultBids.getString(1);
-				  String userBid = resultBids.getString(2);
+				  userBid = resultBids.getString(2);
+				  topBid_ID = resultBids.getString(3);
+				  changed = true;
 				  if(userBid.equals("" + session.getAttribute("user_id")))
 					  color = "green";
+				  int topBidINT = Integer.parseInt(topBid);
+				  if(topBidINT > min)
+					  min = topBidINT;
 			  }
-			  out.println("<div class='listing-item'> <img src='"+itemImageURL+"' /> <span class='title'>"+itemName+"</span> <span class='price'>Starting Price $"+itemStartingPrice+"</span> <span class='price' style='color:"+color+";'>Highest Bid $"+topBid+"</span> <span class='info'>Bid closes "+itemCloseDate+"</span> <span class='bid'> <form action='registerNewBid.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <br/> <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/> <input class='button-register' type='submit' value='Submit Bid'/> </form> <form action='ListingDetails.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <input class='button-register' type='submit' value='Details'/> </form> </span> </div>");
-			}
+			  if(current.compareTo(itemCloseDate) < 0){
+				  out.println("<div class='listing-item'> <img src='"+itemImageURL+"' /> <span class='title'>"+itemName+"</span> <span class='price'>Starting Price $"+itemStartingPrice+"</span> <span class='price' style='color:"+color+";'>Highest Bid $"+topBid+"</span> <span class='info'>Bid Closes: </br>"+itemCloseDate+"</span> <span class='bid'> <form action='registerNewBid.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <br/> <input type='number' name='bidAmount' min= "+ min + " placeholder='Bid Amount ($)' /> <br/> <input class='button-register' type='submit' value='Submit Bid'/> </form> <form action='ListingDetails.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <input class='button-register' type='submit' value='Details'/> </form> </span> </div>");
+		      }else{
+				  String winnerQRY = "SELECT listing_id FROM purchases WHERE listing_id = " + listingID;
+				  Statement stmt3 = con.createStatement();
+				  ResultSet winnerResult = stmt3.executeQuery(winnerQRY);
+				  if(!winnerResult.next() && changed){
+						String insert = "INSERT INTO purchases (bid_id, listing_id, user_id) "
+								+ "VALUES (?, ?, ?)"; 
+						PreparedStatement ps = con.prepareStatement(insert);
+						ps.setString(1, topBid_ID);
+						ps.setString(2, listingID);
+						ps.setString(3, userBid);
+
+						ps.executeUpdate(); 
+				  }
+		      }
+			  }
 		}catch (Exception e) {
 			out.print(e);
 		}
