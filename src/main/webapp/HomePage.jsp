@@ -118,7 +118,7 @@
 				  if(userBid.equals("" + session.getAttribute("user_id")))
 					  color = "green";
 			  }
-			  out.println("<div class='listing-item'> <img src='"+itemImageURL+"' /> <span class='title'>"+itemName+"</span> <span class='price'>Starting Price $"+itemStartingPrice+"</span> <span class='price' style='color:"+color+";' >Highest Bid $"+topBid+"</span> <span class='info'>Bid closes "+itemCloseDate+"</span> <span class='bid'> <form action='registerNewBid.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <br/> <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/> <input class='button-register' type='submit' value='Submit Bid'/> </form> </span> </div>");
+			  out.println("<div class='listing-item'> <img src='"+itemImageURL+"' /> <span class='title'>"+itemName+"</span> <span class='price'>Starting Price $"+itemStartingPrice+"</span> <span class='price' style='color:"+color+";'>Highest Bid $"+topBid+"</span> <span class='info'>Bid closes "+itemCloseDate+"</span> <span class='bid'> <form action='registerNewBid.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <br/> <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/> <input class='button-register' type='submit' value='Submit Bid'/> </form> <form action='ListingDetails.jsp' method='POST'> <input type='hidden' name='listingID' value="+listingID+"> <input class='button-register' type='submit' value='Details'/> </form> </span> </div>");
 			}
 		}catch (Exception e) {
 			out.print(e);

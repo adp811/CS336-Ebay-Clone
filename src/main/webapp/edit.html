@@ -1,15 +1,76 @@
-<div class='listing-item'>			
-  <img src='"+itemImageURL+"' />				
-  <span class='title'>"+itemName+"</span>
-  <span class='price'>Starting Price $"+itemStartingPrice+"</span>
-  <span class='price'>Highest Bid $"+topBid+"</span>
-  <span class='info'>Bid closes "+itemCloseDate+"</span>				
-  <span class='bid'>							
-    <form action='registerNewBid.jsp' method='POST'>  					
-      	<input type='hidden' name='listingID' value="+listingID+"> <br/>						
-        <input type='number' name='bidAmount' placeholder='Bid Amount ($)' /> <br/>						 		  			
-        <input class='button-register' type='submit' value='Submit Bid'/> 					
-    </form>							
-  </span>	
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
 
+  <style>
+    .center-hv {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		.spacer {
+			margin-top: 60px;
+		}
+		.listing-item {
+			display: grid;
+  		align-items: center;
+		}
+		.listing-item img {
+			width: 300px;
+			margin-bottom: calc(var(--contentSpacing) / 2);
+			aspect-ratio: 1;
+		    object-fit: contain;
+		    background: black;
+		}
+
+		.listing-item .title {
+			text-align: center;
+			font-size: 30px;
+		}
+
+		.listing-item .info{
+			text-align: center;
+			font-size: 20px;
+		}
+
+
+  </style>
+  
+  <body>
+
+      <div class = 'center-hv'>
+			<div class = 'listing-item'> 
+        <img src="+itemImageURL+" /> </br>  
+				<span class='title'>"+itemName+"</span> </br> 
+				<hr style='width:100%;text-align:center;'>
+				<span class='info'>Starting Price ($): "+itemStartingPrice+"</span> </br> 
+				<span class='info'>Closing Date: "+itemCloseDate+"</span>
+				<hr style='width:100%;text-align:center;'> </br> 
+				<span class='info'>Brand: "+itemBrand+"</span> </br> 
+				<span class='info'>Subcategory: "+itemSubcategory+"</span> </br> 
+				<span class='info'>Description: "+itemDescription+"</span> </br></br></br></br>
+				
+
+				<span class='title'>Current Bids</span> </br> 
+				<table>
+					<thead>
+						<tr>
+							<th>Bid ID</th>
+							<th>User ID</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+				<tbody>
+				
+			</div>
+      </div>
+    
+  </body>
+</html>
